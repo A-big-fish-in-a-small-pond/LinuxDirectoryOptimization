@@ -1,6 +1,6 @@
-const { execute } = require("./execute");
+const { execute } = require("../execute");
 
-async function main() {
+async function checkSubDir() {
     try {
         const lsResult = await execute("ls -arlt");//ls -arlt
         let lsResultLine = lsResult.split("\n");
@@ -13,11 +13,10 @@ async function main() {
                 resultDirectory.push({ name: enterSplit[9], capacity: enterSplit[4] });
             }
         }
-
-        console.log(resultDirectory);
+        return resultDirectory
     } catch (error) {
-        console.log(error);
+        console.log("error : " + error);
     }
 }
 
-main();
+module.exports.checkSubDir = checkSubDir
